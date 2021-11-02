@@ -38,13 +38,17 @@ public class DB {
         }
     }
     
-    public void Insert(String codigo, String producto, String precio) throws SQLException{
+    public void Insert(String nit, String cliente,String codigo, String producto,String cantidad, String precio) throws SQLException{
         double PRECIO = Double.valueOf(precio);
-        String sql = "insert into producto(Codigo,nombre,precio)values(?, ?, ?)";
-        PreparedStatement cursor = this.con.prepareCall(sql);
-        cursor.setString(1, codigo);
-        cursor.setString(2, producto);
-        cursor.setDouble(3, PRECIO);
+        double CANTIDAD=Double.valueOf(cantidad);
+        String sql = "insert into producto(Nit,Cliente,Codigo,nombre,cantidad,precio)values(?, ?, ?, ?, ?, ?)";
+        PreparedStatement cursor = this.con.prepareCall(sql); 
+        cursor.setString(1, nit);
+        cursor.setString(2, cliente);
+        cursor.setString(3, codigo);
+        cursor.setString(4, producto);
+        cursor.setDouble(5, CANTIDAD);
+        cursor.setDouble(6, PRECIO);
         int result = cursor.executeUpdate();
         if(result > 0){
             JOptionPane.showMessageDialog(null, "Se ha insertado el producto correctamente");
@@ -53,13 +57,14 @@ public class DB {
         }
     }
     
-    public void Actualizar(String codigo, String producto, String precio) throws SQLException{
+    public void Actualizar(String codigo, String producto,String cantidad, String precio) throws SQLException{
         double PRECIO = Double.valueOf(precio);
-        String sql = "update producto set nombre=?, precio=? where Codigo=?";
+        double CANTIDAD=Double.valueOf(cantidad);
+        String sql = "update producto set nombre=?,cantidad=?, precio=? where Codigo=?";
         PreparedStatement cursor = this.con.prepareCall(sql);
-        cursor.setString(1, producto);
-        cursor.setDouble(2, PRECIO);
-        cursor.setString(3, codigo);
+        cursor.setString(4, producto);
+        cursor.setDouble(5, CANTIDAD);
+        cursor.setDouble(6, PRECIO);
         int result = cursor.executeUpdate();
         if(result > 0){
             JOptionPane.showMessageDialog(null, "Se ha modificado el producto correctamente");

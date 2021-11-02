@@ -8,6 +8,7 @@ package parcial;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,11 +35,11 @@ public class Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        Rep = new javax.swing.JButton();
         Dash = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
@@ -67,14 +68,6 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 51, 51));
 
-        Rep.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        Rep.setText("Reporte");
-        Rep.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RepActionPerformed(evt);
-            }
-        });
-
         Dash.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         Dash.setText("Dashboard");
         Dash.addActionListener(new java.awt.event.ActionListener() {
@@ -85,6 +78,11 @@ public class Principal extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -93,21 +91,18 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(255, 255, 255)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Rep, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                    .addComponent(Dash, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Dash, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(285, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(Dash, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Rep, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -140,14 +135,16 @@ public class Principal extends javax.swing.JFrame {
             new Dashboard().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null,"Error al conectar");
         }
          this.setVisible(false);
     }//GEN-LAST:event_DashActionPerformed
 
-    private void RepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RepActionPerformed
-        new Reporte().setVisible(true);
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        new Login().setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_RepActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,7 +183,6 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Dash;
-    private javax.swing.JButton Rep;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
