@@ -181,7 +181,7 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String usuario = jTextField2.getText();
         String contra = String.valueOf(jPasswordField1.getPassword());
-        if(usuario.equals("admin") && contra.equals("admin")){
+        if(usuario.equals("admin") && contra.equals("1234")){
             this.setVisible(false);
             new Principal().setVisible(true);
             
