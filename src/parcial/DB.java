@@ -51,9 +51,9 @@ public class DB {
         cursor.setDouble(6, PRECIO);
         int result = cursor.executeUpdate();
         if(result > 0){
-            JOptionPane.showMessageDialog(null, "Se ha insertado el producto correctamente");
+            JOptionPane.showMessageDialog(null, "Se ha insertado la venta correctamente");
         }else{
-             JOptionPane.showMessageDialog(null, "Error al insertar producto en la base de datos");
+             JOptionPane.showMessageDialog(null, "Error al insertar venta en la base de datos");
         }
     }
     
@@ -81,7 +81,7 @@ public class DB {
             PreparedStatement preparedStmt = this.con.prepareStatement(query);
             preparedStmt.setString(1, codigo);
             preparedStmt.execute();
-           JOptionPane.showMessageDialog(null, "Producto eliminado correctamente");
+           JOptionPane.showMessageDialog(null, "Venta eliminada correctamente");
         }catch(Exception e){
             showMessageDialog(null, e.getMessage());
         }
