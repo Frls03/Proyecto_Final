@@ -14,7 +14,7 @@ public class DB {
     //metodo constructor
     public DB() throws ClassNotFoundException, SQLException{
         Class.forName("com.mysql.jdbc.Driver");
-        String server = "jdbc:mysql://localhost:3306/";
+        String server = "jdbc:mysql://localhost:3307/";
         String database = "ventas";
         String user = "root";
         String password = "";
