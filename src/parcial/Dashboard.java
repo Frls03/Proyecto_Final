@@ -37,6 +37,7 @@ public class Dashboard extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(3).setCellRenderer(tcr);
             jTable1.getColumnModel().getColumn(5).setCellRenderer(tcr);
             jTable1.getColumnModel().getColumn(6).setCellRenderer(tcr);
+            jTable1.getColumnModel().getColumn(7).setCellRenderer(tcr);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -49,7 +50,7 @@ public class Dashboard extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         model.setRowCount(0);
         while(rs.next()){
-            Object[] row = {rs.getString(1), rs.getString(2),rs.getString(3), rs.getString(4),rs.getDouble(5), rs.getDouble(6),rs.getDouble(7 )};
+            Object[] row = {rs.getString(1), rs.getString(2),rs.getString(3), rs.getString(4),rs.getDouble(5), rs.getDouble(6),rs.getDouble(7 ),rs.getDouble(8)};
             model.addRow(row);
         }
     }
@@ -579,17 +580,17 @@ public class Dashboard extends javax.swing.JFrame {
         jTable1.setAutoCreateRowSorter(true);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nit", "Cliente", "Codigo", "Producto", "Cantidad", "Precio unitario", "Precio final"
+                "Nit", "Cliente", "Codigo", "Producto", "Cantidad", "Precio unitario", "Precio final Sin Iva", "Precio final"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class, java.lang.Double.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -740,6 +741,8 @@ public class Dashboard extends javax.swing.JFrame {
         try {
             try {
                 fillTable();
+                jTextField8.setText("");
+                jTextField10.setText("");
                 jTextField2.setText("");
                 jTextField1.setText("");
                 jTextField7.setText("");

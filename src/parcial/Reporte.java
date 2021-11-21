@@ -12,24 +12,13 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
 public class Reporte {
     public void CrearReporte(){
-        /*
-        String file = "Productos.xlsx";
-        XSSFWorkbook book = new XSSFWorkbook();
-        String name = "Productos";
-        XSSFSheet hoja1 = book.createSheet(name);
-        String[] headers = new String[]{"Nit", "Cliente", "Codigo", "Producto", "Cantidad", "Precio Unitario", "Precio"};
-        
-                String nombreArchivo = "ListaUsuarios.xlsx";
-        
-        String hoja = "Usuarios";*/
+
         String nombreArchivo = "Productos.xlsx";
         
         String hoja = "INFORME";
@@ -37,7 +26,7 @@ public class Reporte {
         XSSFSheet hoja1 = libro.createSheet(hoja);
         
         // Cabecera de la hoja de excel
-        String[] header = new String[] {"Nit", "Cliente", "Codigo", "Producto", "Cantidad", "Precio Unitario", "Precio Final"};
+        String[] header = new String[] {"Nit", "Cliente", "Codigo", "Producto", "Cantidad", "Precio Unitario", "Precio Final sin iva", "Precio final"};
         
         // Contenido de la hoja de excel
         //String[][] document = new String[][];

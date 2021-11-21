@@ -42,7 +42,8 @@ public class DB {
         double PRECIO = Double.valueOf(precio);
         double CANTIDAD=Double.valueOf(cantidad);
         double PrecioF;
-        String sql = "insert into producto(Nit,Cliente,Codigo,nombre,cantidad,precio,preciof)values(?, ?, ?, ?, ?, ?,?)";
+        
+        String sql = "insert into producto(Nit,Cliente,Codigo,nombre,cantidad,precio,preciofsi,preciof)values(?, ?, ?, ?, ?, ?, ?,?)";
         PreparedStatement cursor = this.con.prepareCall(sql); 
         cursor.setString(1, nit);
         cursor.setString(2, cliente);
@@ -50,8 +51,10 @@ public class DB {
         cursor.setString(4, producto);
         cursor.setDouble(5, CANTIDAD);
         cursor.setDouble(6, PRECIO);
+        cursor.setFloat(7, (float) ((PRECIO*CANTIDAD)/1.12));
         PrecioF=CANTIDAD*PRECIO;
-        cursor.setDouble(7, PrecioF);
+        cursor.setDouble(8, PrecioF);
+      
         
         
         int result = cursor.executeUpdate();
@@ -65,14 +68,16 @@ public class DB {
     public void Actualizar(String nit, String cliente,String codigo, String producto,String cantidad, String precio) throws SQLException{
         double PRECIO = Double.valueOf(precio);
         double CANTIDAD=Double.valueOf(cantidad);
-        String sql = "update producto set Cliente=?, Codigo=?, nombre=?,cantidad=?, precio=? where Nit=?";
+        String sql = "update producto set Cliente=?, Codigo=?, nombre=?,cantidad=?, precio=?, preciofsi=?, preciof=? where Nit=?";
         PreparedStatement cursor = this.con.prepareCall(sql);
         cursor.setString(1, cliente);
         cursor.setString(2, codigo);
         cursor.setString(3, producto);
         cursor.setDouble(4, CANTIDAD);
         cursor.setDouble(5, PRECIO);
-        cursor.setString(6, nit);
+        cursor.setFloat(6, (float) ((PRECIO*CANTIDAD)/1.12));
+        cursor.setDouble(7, CANTIDAD*PRECIO);
+        cursor.setString(8, nit);
 int result = cursor.executeUpdate();
         if(result > 0){
             JOptionPane.showMessageDialog(null, "Se ha modificado el producto correctamente");
